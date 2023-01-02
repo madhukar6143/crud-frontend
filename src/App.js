@@ -2,7 +2,7 @@ import AddUser from './component/AddUser';
 import './App.css';
 import UserList from './component/UserList';
 import {Route,Routes,Link} from 'react-router-dom'
-export const URL = "http://localhost:5000"
+export const URL = "https://crud-practice-backend.onrender.com"
 
 function App() {
   return (
