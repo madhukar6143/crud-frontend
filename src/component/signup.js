@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Signup.css";
 
-const AddUser = () => {
+const Signup = () => {
   const navigate = useNavigate();  // Initialize the useNavigate hook
   const {
     register,
@@ -17,10 +17,10 @@ const AddUser = () => {
   const onSubmit = async (data) => {
     try {
       let response = await axios.post(`${URL}/user/signup`, data);
-      console.log(response.data.message)
       alert(response.data.message);
 
       // If signup is successful, navigate to the login page
+      navigate('/login');
     } catch (error) {
       alert(error.response.data.message);
       console.log(error);
@@ -28,12 +28,10 @@ const AddUser = () => {
   };
 
   return (
-    <div>
-    <div className="signup-page p-2 ">
     
-      <form onSubmit={handleSubmit(onSubmit)} className=" abcd border border-warning border-5 rounded p-1">
-        
-      <h1 className="w-100 border-bottom  border-success" >Add User</h1>
+    <div className="signup-page border-danger border-5 p-5 ">
+      <form onSubmit={handleSubmit(onSubmit)} className=" abcd border border-warning border-5 rounded p-3">
+      <h1 className="w-100 border-bottom  border-success" >Register</h1>
         <div className="mb-1">
         <label>:</label>
           <input
@@ -45,7 +43,7 @@ const AddUser = () => {
               },
             })}
             type="text"
-            className="form-control inputclass"
+            className="form-control"
             placeholder="Name"
             autoComplete="off"
           />
@@ -62,7 +60,7 @@ const AddUser = () => {
               },
             })}
             type="email"
-            className="form-control inputclass"
+            className="form-control"
             placeholder="Email"
             autoComplete="off"
           />
@@ -79,7 +77,7 @@ const AddUser = () => {
               },
             })}
             type="tel"
-            className="form-control inputclass"
+            className="form-control"
             placeholder="Phone"
             autoComplete="off"
           />
@@ -94,14 +92,14 @@ const AddUser = () => {
               minLength: 6, // Set your desired minimum password length
             })}
             type="password"
-            className="form-control inputclass"
+            className="form-control"
             placeholder="Password"
             autoComplete="off"
           />
           {errors.password && <span className="error">{errors.password.message}</span>}
         </div>
 
-        <div className="mb-3 ">
+        <div className="mb-3 border border-warning">
           <label>Gender:</label>
           <br />
           <div className="form-check-inline">
@@ -212,108 +210,12 @@ const AddUser = () => {
         </div>
 
 
-        <button type="submit" className="btn btn-primary btn-sm">
-          Add User
+        <button type="submit" className="btn btn-primary">
+          Sign Up
         </button>
       </form>
-    </div>
     </div>
   );
 };
 
-export default AddUser;
-
-
-/*import React from 'react'
-import {useForm} from 'react-hook-form'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
-import { URL } from "../App";
-
-function AddUser() {
- 
-    let {register,handleSubmit,formState:{errors},reset}=useForm()
-    let navigate = useNavigate()
-    const onSubmit = async(data) => {
-      console.log(data)
-        let response =await axios.post(`${URL}/user/create-user`,data)
-        if (response.status === 200) {
-            //navigate to userlist component
-            alert(response.data.message)
-            navigate("/userlist")
-          }
-        if(response.status===200)
-        {
-            reset({
-                username: '',
-                email: '',
-                phoneNumber:''
-              });
-        }
-        
-      };
-     
-
-  return (
-  <div className='container border border-secondary mt-5 px-5 '>
-  <form onSubmit={handleSubmit(onSubmit)}>
-    
-  <div>
-    <input placeholder='username' className='border border-primary p-1 m-1'
-       {...register("username", 
-       { 
-          // check username is empty
-         required: "username required.",
-         //minimum lentgh of username
-        minLength: 
-        {
-          value: 6,
-          message: 'minimum length should be 6' // JS only: <p>error message</p> TS only support string
-        }
-         })}/>
-  </div>
-       {errors.username && <p>{errors.username.message}</p>}
-
-
-       <div>
-  <input
-    className='border border-primary p-1 m-1'
-    placeholder='email'
-    {...register("email", {
-      required: "Email required",
-      pattern: {
-        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        message: 'Enter a valid email address',
-      }
-    })}
-  />
-</div>
-
-
-      {errors.email && <p>{errors.email.message}</p>}
-      <div>
-  <input
-    className='border border-primary p-1 m-1'
-    placeholder='phone number'
-    {...register("phoneNumber", {
-      required: "Phone number required",
-      pattern: {
-        value: /^\d{10}$/,
-        message: 'Enter a valid 10-digit phone number',
-      }
-    })}
-  />
-</div>
-
-{errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-
-      <input type="submit" />
-  </form>
-  </div>
-
-  )
-}
-
-export default AddUser
-
-*/
+export default Signup;

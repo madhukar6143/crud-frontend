@@ -1,0 +1,63 @@
+
+  /* Main Content styles */
+  .abcd {
+    background-image: url('https://wallpapercave.com/wp/wp13342071.jpg'); /* Replace 'abcd' with the path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keep the background fixed in the viewport */
+    min-height: 550px;
+  }
+  
+  .efgh {
+    background-image: url('https://wallpapercave.com/wp/wp13342071.jpg'); /* Replace 'abcd' with the path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keep the background fixed in the viewport */
+    min-height: 500px;
+        white-space: pre-line;
+
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 767px) {
+    .abcd {
+      min-height: 300px; /* Adjust the min-height for smaller screens */
+    }
+  }
+  
+  
+
+  
+  .jumbotron {
+    color: #fff; /* Adjust text color for better visibility on the background */
+    padding: 2rem;
+  }
+
+  .jumbotron h1 {
+    font-size: 3rem;
+  }
+  
+  .jumbotron p {
+    font-size: 1.25rem;
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1rem 0;
+  }
+
+
+  /* Button hover effect */
+  .jumbotronButton a:hover {
+    background-color: #28a745; /* Change the border color on hover, replace with your desired color */
+    color: #fff; /* Change the text color on hover, replace with your desired color */
+  }
+  
+
+/* If you want to change the color of the text when the button is active, you can use the following CSS */
+.active-button a {
+  border-color: #28a745;
+  color: gold; 
+}

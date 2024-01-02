@@ -1,22 +1,35 @@
 import AddUser from './component/AddUser';
 import './App.css';
 import UserList from './component/UserList';
+import Login from './component/Login';
+import Signup from './component/signup';
 import {Route,Routes,Link} from 'react-router-dom'
-export const URL = "https://crud-practice-backend.onrender.com"
+import Navigation from './component/Navigation';
+import Home from './component/Home';
+
+
+export const URL = "https://mindfulproject.onrender.com"
+//export const URL = "http://localhost:4000"
 
 function App() {
+
   return (
     <div className="App">
-      <nav className="nav  justify-content-around ">
-         <Link className="nav-link border border-primary" to="adduser">AddUser</Link>
-         <Link className="nav-link border border-primary" to="userlist">DisplayUser</Link>
-     </nav>
-     <Routes>
-      <Route path='adduser'  element={<AddUser/>}/>
-      <Route path='userlist' element={<UserList/>}/>
-     </Routes>
+      <Navigation />
+      <Routes>
+        <Route path='/home' exact element={<Home />} />
+        <Route path='/login'  element={<Login/>}/>
+        <Route path='/addItem' element={<AddUser/>}/>
+        <Route path='/users' element={<UserList/>}/>
+        <Route path="*" element={<Signup />} />
+      </Routes>
     </div>
   );
 }
 
+  
+
 export default App;
+
+
+
